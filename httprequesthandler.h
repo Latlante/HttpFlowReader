@@ -25,12 +25,7 @@ public:
     QByteArray requestPost(QString url, QByteArray body);
 
 private slots:
-    void onAuthentificationRequired(QNetworkReply*, QAuthenticator *authenticator);
-    void onReadyRead_NetworkReply();
     void onDownloadProgress(qint64 bytesReceived, qint64 bytesTotal);
-    void onFinished_NetworkReply();
-    void onError_NetworkReply(QNetworkReply::NetworkError code);
-    //void onSslError_AccessManager(QNetworkReply*, const QList<QSslError> &errors);
 
 private:
     QUrl m_url;

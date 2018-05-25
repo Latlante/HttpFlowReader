@@ -2,7 +2,6 @@
 #define FENETRE_H
 
 #include <QMainWindow>
-#include "httprequesthandler.h"
 
 class ModelHeaderRequestData;
 
@@ -27,7 +26,6 @@ private slots:
 private:
     Ui::Fenetre *ui;
     ModelHeaderRequestData* m_modelRawsHeader;
-    HttpRequestHandler request;
 };
 
 #endif // FENETRE_H

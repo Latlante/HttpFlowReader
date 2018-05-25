@@ -2,7 +2,7 @@
 #include "ui_fenetre.h"
 
 #include "common.h"
-
+#include "httprequesthandler.h"
 #include "modelheaderrequestdata.h"
 
 Fenetre::Fenetre(QWidget *parent) :
@@ -27,6 +27,9 @@ Fenetre::~Fenetre()
     delete ui;
 }
 
+/******************************************
+ ***       FONCTIONS SLOT PRIVEES       ***
+ ******************************************/
 void Fenetre::onClicked_pushButtonAddRawHeader()
 {
     RawHeader raw = { ui->lineEditRawHeaderName->text().toLatin1(), ui->lineEditRawHeaderValue->text().toLatin1() };
@@ -42,7 +45,7 @@ void Fenetre::onClicked_pushButtonSendRequest()
 {
     ui->textEditReception->clear();
 
-    request;
+    HttpRequestHandler request;
     QByteArray code;
     request.setRawsHeader(m_modelRawsHeader->rawsHeader());
 

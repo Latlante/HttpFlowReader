@@ -9,6 +9,9 @@ ModelHeaderRequestData::ModelHeaderRequestData(QObject *parent) :
 
 }
 
+/******************************************
+ ***        FONCTIONS PUBLIQUES         ***
+ ******************************************/
 QList<RawHeader> ModelHeaderRequestData::rawsHeader()
 {
     return m_rawsHeader;
