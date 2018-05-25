@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -25,10 +26,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        fenetre.cpp
+        fenetre.cpp \
+    modelheaderrequestdata.cpp \
+    common.cpp \
+    httprequesthandler.cpp
 
 HEADERS += \
-        fenetre.h
+        fenetre.h \
+    modelheaderrequestdata.h \
+    common.h \
+    httprequesthandler.h
 
 FORMS += \
         fenetre.ui

@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+class ModelHeaderRequestData;
+
 namespace Ui {
 class Fenetre;
 }
@@ -15,8 +17,14 @@ public:
     explicit Fenetre(QWidget *parent = 0);
     ~Fenetre();
 
+private slots:
+    void onClicked_pushButtonAddRawHeader();
+    void onClicked_pushButtonRemoveRawHeader();
+    void onClicked_pushButtonSendRequest();
+
 private:
     Ui::Fenetre *ui;
+    ModelHeaderRequestData* m_modelRawsHeader;
 };
 
 #endif // FENETRE_H
