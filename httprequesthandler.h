@@ -22,7 +22,7 @@ public:
     void setRawsHeader(QList<RawHeader> rawsHeader);
 
     QByteArray requestGet(QString url);
-    QByteArray requestPost(QString url);
+    QByteArray requestPost(QString url, QByteArray body);
 
 private slots:
     void onAuthentificationRequired(QNetworkReply*, QAuthenticator *authenticator);

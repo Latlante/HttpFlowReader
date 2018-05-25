@@ -55,6 +55,6 @@ QVariant ModelHeaderRequestData::data(const QModelIndex &index, int role) const
         }
     }
 
-    qDebug() << __PRETTY_FUNCTION__ << "error index=" << index;
-    return QVariant::Invalid;
+    //qDebug() << __PRETTY_FUNCTION__ << "error index=" << index;
+    return QVariant();
 }

@@ -2,7 +2,7 @@
 #include "ui_fenetre.h"
 
 #include "common.h"
-#include "httprequesthandler.h"
+
 #include "modelheaderrequestdata.h"
 
 Fenetre::Fenetre(QWidget *parent) :
@@ -12,11 +12,13 @@ Fenetre::Fenetre(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    ui->textEditBody->setEnabled(false);
     ui->tableViewHeader->setModel(m_modelRawsHeader);
 
     connect(ui->pushButtonAddRawHeader, &QPushButton::clicked, this, &Fenetre::onClicked_pushButtonAddRawHeader);
     connect(ui->pushButtonRemoveRawHeader, &QPushButton::clicked, this, &Fenetre::onClicked_pushButtonRemoveRawHeader);
     connect(ui->pushButtonSendRequest, &QPushButton::clicked, this, &Fenetre::onClicked_pushButtonSendRequest);
+    connect(ui->comboBoxRequestMethod, static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &Fenetre::onCurrentIndexChanged_ComboBoxRequestMethod);
 }
 
 Fenetre::~Fenetre()
@@ -38,7 +40,9 @@ void Fenetre::onClicked_pushButtonRemoveRawHeader()
 
 void Fenetre::onClicked_pushButtonSendRequest()
 {
-    HttpRequestHandler request;
+    ui->textEditReception->clear();
+
+    request;
     QByteArray code;
     request.setRawsHeader(m_modelRawsHeader->rawsHeader());
 
@@ -48,9 +52,21 @@ void Fenetre::onClicked_pushButtonSendRequest()
     }
     else        //POST
     {
-        code = request.requestPost(ui->lineEditUrl->text());
+        code = request.requestPost(ui->lineEditUrl->text(), ui->textEditBody->toPlainText().toLatin1());
     }
 
     ui->textEditReception->setText(code);
     qDebug() << "Fin de la requête";
+}
+
+void Fenetre::onCurrentIndexChanged_ComboBoxRequestMethod()
+{
+    if(ui->comboBoxRequestMethod->currentIndex() == 0)  //GET
+    {
+        ui->textEditBody->setEnabled(false);
+    }
+    else        //POST
+    {
+        ui->textEditBody->setEnabled(true);
+    }
 }

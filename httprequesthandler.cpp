@@ -44,10 +44,15 @@ QByteArray HttpRequestHandler::requestGet(QString url)
     foreach(RawHeader data, m_rawsHeader)
         netRequest.setRawHeader(data.name, data.value);
 
-    //QSslConfiguration config = QSslConfiguration::defaultConfiguration();
-    //config.setProtocol(QSsl::AnyProtocol);
-    //netRequest.setSslConfiguration(config);
-    netRequest.setHeader(QNetworkRequest::ServerHeader, "application/json");
+    qDebug() << __PRETTY_FUNCTION__ << "rawHeader=" << netRequest.rawHeaderList();
+
+    /*QSslConfiguration config = QSslConfiguration::defaultConfiguration();
+    config.setProtocol(QSsl::AnyProtocol);
+    netRequest.setSslConfiguration(config);*/
+    //netRequest.setHeader(QNetworkRequest::ServerHeader, "application/json");
+    netRequest.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    netRequest.setHeader(QNetworkRequest::ContentLengthHeader, 47);
+    netRequest.setHeader(QNetworkRequest::UserAgentHeader, "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36");
 
     //connect(&m_accessManager, &QNetworkAccessManager::finished, this, &HttpRequestHandler::onFinished_NetworkReply);
 

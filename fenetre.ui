@@ -176,7 +176,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QTableView" name="tableViewHeader"/>
+          <widget class="QTableView" name="tableViewHeader">
+           <attribute name="horizontalHeaderStretchLastSection">
+            <bool>true</bool>
+           </attribute>
+          </widget>
          </item>
          <item>
           <widget class="QFrame" name="frame_2">
